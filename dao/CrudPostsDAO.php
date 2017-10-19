@@ -19,7 +19,7 @@ final class CrudPostsDAO{
        										   usu.assinatura,
        										   date_format(usu.dataRegistro, '%d/%m/%Y') as dataRegistro,
        										   usu.id_usuario,
-                             pos.id_post
+											   pos.id_post
   										  FROM tb_posts pos, 
 	   										     tb_usuario usu
  										   WHERE pos.tb_usuario_id_usuario = usu.id_usuario
@@ -34,19 +34,19 @@ final class CrudPostsDAO{
   					$postagem = New Postagem();
   					$postagem->setNomePost($row->nomePost);
   					$postagem->setDescricao($row->descricao);
-						$postagem->setDataPost($row->dataPost);
-						$postagem->setNickName($row->nickname);
-						$postagem->setNome($row->nome);
-						$postagem->setPerfil($row->perfil);
-						$postagem->setAssinatura($row->assinatura);
-						$postagem->setDataRegistro($row->dataRegistro);
-						$postagem->setIdUsuario($row->id_usuario);
-						if(empty($row->foto)){
-							$postagem->setFoto('./imagens/usuarios/alien.png');
-						}else{
-						   $postagem->setFoto($row->foto);
-						}
-            $postagem->setIdPost($row->id_post);
+					$postagem->setDataPost($row->dataPost);
+					$postagem->setNickName($row->nickname);
+					$postagem->setNome($row->nome);
+					$postagem->setPerfil($row->perfil);
+					$postagem->setAssinatura($row->assinatura);
+					$postagem->setDataRegistro($row->dataRegistro);
+					$postagem->setIdUsuario($row->id_usuario);
+					if(empty($row->foto)){
+						$postagem->setFoto('./imagens/usuarios/alien.png');
+					}else{
+					   $postagem->setFoto($row->foto);
+					}
+						$postagem->setIdPost($row->id_post);
 
 					}
         }       
@@ -188,7 +188,7 @@ final class CrudPostsDAO{
 
     try {
       
-      $con = new PDO("mysql:host=localhost;dbname=forum;charset=utf8", "root", "");
+		$con = new PDO("mysql:host=localhost;dbname=forum;charset=utf8", "root", "");
 
         $resultSet = $con->prepare("SELECT pos.nomePost,
                                            substr(pos.descricao,1,200) as descricao,
